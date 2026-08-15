@@ -8,7 +8,7 @@ const defaultHabits = [
     done: false,
     history: []
   },
-emoji jsi jijO
+
   {
     id: 2,
     name: "Web development",
