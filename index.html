@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>HabitPulse — Your Daily Momentum</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="brand">
+        <div class="logo">H</div>
+
+        <div>
+          <b>HabitPulse</b>
+          <small>Daily momentum</small>
+        </div>
+      </div>
+
+      <nav>
+        <button class="nav active" data-page="dashboard">
+          ⌂ <span>Dashboard</span>
+        </button>
+
+        <button class="nav" data-page="habits">
+          ✓ <span>My Habits</span>
+        </button>
+
+        <button class="nav" data-page="insights">
+          ◈ <span>Insights</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-quote">
+        <span>🌱</span>
+        <b>
+          Small steps.<br>
+          Big changes.
+        </b>
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main>
+
+      <!-- TOPBAR -->
+      <header class="topbar">
+
+        <div class="mobile-brand">
+          <div class="logo">H</div>
+          <b>HabitPulse</b>
+        </div>
+
+        <div class="top-actions">
+          <button class="icon-btn" id="themeBtn">☾</button>
+          <div class="avatar">👤</div>
+        </div>
+
+      </header>
+
+
+      <!-- CONTENT -->
+      <section class="content">
+
+        <!-- HERO -->
+        <div class="hero">
+
+          <div>
+            <p class="eyebrow">YOUR DAILY MOMENTUM</p>
+
+            <h1 id="greeting">
+              Good evening, Vignesh 👋
+            </h1>
+
+            <p class="muted">
+              Progress, not perfection. Let's make today count.
+            </p>
+          </div>
+
+          <div class="date-pill" id="todayDate"></div>
+
+        </div>
+
+
+        <!-- STATS -->
+        <div class="stats">
+
+          <div class="stat">
+            <div class="stat-icon">🔥</div>
+
+            <div>
+              <small>Current streak</small>
+              <strong id="streak">0 days</strong>
+            </div>
+          </div>
+
+
+          <div class="stat">
+            <div class="stat-icon">◒</div>
+
+            <div>
+              <small>Today's progress</small>
+              <strong id="progress">0%</strong>
+            </div>
+          </div>
+
+
+          <div class="stat">
+            <div class="stat-icon">🏆</div>
+
+            <div>
+              <small>Best streak</small>
+              <strong id="best">0 days</strong>
+            </div>
+          </div>
+
+
+          <div class="stat">
+            <div class="stat-icon">✓</div>
+
+            <div>
+              <small>Completed today</small>
+              <strong id="completed">0 / 0</strong>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- DASHBOARD -->
+        <div id="dashboardPage">
+
+          <div class="section-head">
+
+            <div>
+              <h2>Today's habits</h2>
+
+              <p class="muted">
+                One check at a time.
+              </p>
+            </div>
+
+            <button class="primary" id="addBtn">
+              ＋ Add habit
+            </button>
+
+          </div>
+
+
+          <!-- HABITS -->
+          <div class="habit-list" id="habitList"></div>
+
+
+          <!-- MOTIVATION -->
+          <div class="pulse-card">
+
+            <div class="pulse-icon">
+              💬
+            </div>
+
+            <div>
+
+              <span class="eyebrow">
+                HABITPULSE SAYS
+              </span>
+
+              <h3 id="message">
+                Ready when you are.
+              </h3>
+
+              <p id="messageSub">
+                Complete your first habit to get today's feedback.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- COMMAND BOX -->
+          <div class="command-box">
+
+            <div class="command-title">
+              <span>✦</span>
+              Talk to HabitPulse
+            </div>
+
+
+            <div class="command-input">
+
+              <input
+                id="commandInput"
+                placeholder="Try /motivate, /streak, /stats, /today..."
+              >
+
+              <button id="commandBtn">
+                Run
+              </button>
+
+            </div>
+
+
+            <div class="commands">
+
+              <button data-command="/motivate">
+                /motivate
+              </button>
+
+              <button data-command="/streak">
+                /streak
+              </button>
+
+              <button data-command="/stats">
+                /stats
+              </button>
+
+              <button data-command="/today">
+                /today
+              </button>
+
+              <button data-command="/quote">
+                /quote
+              </button>
+
+              <button data-command="/restart">
+                /restart
+              </button>
+
+            </div>
+
+
+            <div
+              class="command-result hidden"
+              id="commandResult"
+            ></div>
+
+          </div>
+
+        </div>
+
+
+        <!-- HABITS PAGE -->
+        <div id="habitsPage" class="page hidden">
+
+          <div class="section-head">
+
+            <div>
+
+              <h2>My habits</h2>
+
+              <p class="muted">
+                Build a routine that works for you.
+              </p>
+
+            </div>
+
+            <button class="primary" id="addBtn2">
+              ＋ Add habit
+            </button>
+
+          </div>
+
+
+          <div
+            class="habit-list"
+            id="habitList2"
+          ></div>
+
+        </div>
+
+
+        <!-- INSIGHTS PAGE -->
+        <div id="insightsPage" class="page hidden">
+
+          <div class="section-head">
+
+            <div>
+
+              <h2>Your insights</h2>
+
+              <p class="muted">
+                A simple view of your consistency.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="insight-grid">
+
+            <div class="insight-card">
+
+              <span>
+                Weekly consistency
+              </span>
+
+              <strong id="weekly">
+                0%
+              </strong>
+
+              <div class="progress-bar">
+                <i id="weeklyBar"></i>
+              </div>
+
+            </div>
+
+
+            <div class="insight-card">
+
+              <span>
+                Total completions
+              </span>
+
+              <strong id="totalDone">
+                0
+              </strong>
+
+              <p class="muted">
+                Every completed habit counts.
+              </p>
+
+            </div>
+
+
+            <div class="insight-card">
+
+              <span>
+                Best habit
+              </span>
+
+              <strong id="bestHabit">
+                —
+              </strong>
+
+              <p
+                class="muted"
+                id="bestHabitSub"
+              >
+                Keep showing up.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- ADD HABIT MODAL -->
+
+  <div class="modal hidden" id="modal">
+
+    <div class="modal-card">
+
+      <button
+        class="close"
+        id="closeBtn"
+      >
+        ×
+      </button>
+
+      <p class="eyebrow">
+        NEW HABIT
+      </p>
+
+      <h2>
+        Add a habit
+      </h2>
+
+      <p class="muted">
+        Keep it small enough to do consistently.
+      </p>
+
+
+      <form id="habitForm">
+
+        <label>
+          Habit name
+
+          <input
+            name="name"
+            required
+            maxlength="32"
+            placeholder="e.g. Solve 1 LeetCode problem"
+          >
+        </label>
+
+
+        <label>
+          Category
+
+          <select name="category">
+
+            <option>Study</option>
+            <option>Health</option>
+            <option>Fitness</option>
+            <option>Personal</option>
+            <option>Work</option>
+
+          </select>
+
+        </label>
+
+
+        <label>
+          Emoji
+
+          <input
+            name="emoji"
+            maxlength="2"
+            placeholder="🎯"
+          >
+
+        </label>
+
+
+        <button
+          class="primary wide"
+          type="submit"
+        >
+          Create habit
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="toast"
+    id="toast"
+  ></div>
+
+
+  <script src="index.js"></script>
+
+</body>
+</html>
